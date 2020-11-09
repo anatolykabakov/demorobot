@@ -9,4 +9,4 @@ Multichannel ADC
 DELAY
 Character conversion
 
-Needs to be corrected/reworked and commented out/
+Needs to be corrected/reworked and commented out.
