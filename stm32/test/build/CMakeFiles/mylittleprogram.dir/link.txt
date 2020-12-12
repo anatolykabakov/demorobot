@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/mylittleprogram.dir/main.c.o  -o mylittleprogram liblogic.a 

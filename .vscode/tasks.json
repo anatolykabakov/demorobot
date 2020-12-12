@@ -1,0 +1,13 @@
+{
+    "tasks": [
+        {
+            "label": "build and make debug cmake",
+            "type": "shell",
+            "command": "cmake -DCMAKE_BUILD_TYPE=Debug .. && make",
+            "options": {
+                "cwd": "/home/kabakov/dev/git/demorobot/stm32/test/build"
+            },
+        },
+    ],
+    "version": "2.0.0"
+}

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kabakov/dev/git/demorobot/stm32/test/logic.h
+
+/home/kabakov/dev/git/demorobot/stm32/test/main.c
+stdio.h
+-
+stdlib.h
+-
+logic.h
+/home/kabakov/dev/git/demorobot/stm32/test/logic.h
+

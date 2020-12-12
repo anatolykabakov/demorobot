@@ -1,0 +1,7 @@
+{
+    "commentTranslate.targetLanguage": "ru",
+    "files.associations": {
+        "system_error": "c",
+        "cstddef": "cpp"
+    }
+}
