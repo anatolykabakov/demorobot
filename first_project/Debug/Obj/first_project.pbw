@@ -92167,13 +92167,27 @@
     "scope": null
   },
   {
+    "ID": "c:@F@threshold_pwm",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int threshold_pwm(int, int)",
+    "location": {
+      "column": "5",
+      "line": "34",
+      "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
+    },
+    "name": "threshold_pwm",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@foo",
     "What": "Function",
     "defdec": "Def",
     "display": "void foo(int *, int, int *, int *, uint16_t *, uint16_t *)",
     "location": {
       "column": "6",
-      "line": "34",
+      "line": "42",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "foo",
@@ -92181,13 +92195,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1130@F@foo@channel_counter",
+    "ID": "c:logic.c@1255@F@foo@channel_counter",
     "What": "Variable",
     "defdec": "Def",
     "display": "channel_counter",
     "location": {
       "column": "9",
-      "line": "40",
+      "line": "48",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "channel_counter",
@@ -92195,13 +92209,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1167@F@foo@i",
+    "ID": "c:logic.c@1292@F@foo@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "14",
-      "line": "42",
+      "line": "50",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "i",
@@ -92209,13 +92223,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1218@F@foo@section_index",
+    "ID": "c:logic.c@1343@F@foo@section_index",
     "What": "Variable",
     "defdec": "Def",
     "display": "section_index",
     "location": {
       "column": "13",
-      "line": "43",
+      "line": "51",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "section_index",
@@ -92223,13 +92237,27 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1481@F@foo@channel",
+    "ID": "c:logic.c@1444@F@foo@section_pwm",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "section_pwm",
+    "location": {
+      "column": "13",
+      "line": "55",
+      "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
+    },
+    "name": "section_pwm",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:logic.c@1687@F@foo@channel",
     "What": "Variable",
     "defdec": "Def",
     "display": "channel",
     "location": {
       "column": "13",
-      "line": "50",
+      "line": "60",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "channel",
@@ -92243,7 +92271,7 @@
     "display": "void parse_section_pwm_and_channel_from_message(uint16_t *, uint16_t *, uint16_t *, uint16_t *)",
     "location": {
       "column": "6",
-      "line": "57",
+      "line": "67",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "parse_section_pwm_and_channel_from_message",
@@ -92251,13 +92279,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1897@F@parse_section_pwm_and_channel_from_message@buttons_values",
+    "ID": "c:logic.c@2103@F@parse_section_pwm_and_channel_from_message@buttons_values",
     "What": "Variable",
     "defdec": "Def",
     "display": "buttons_values",
     "location": {
       "column": "9",
-      "line": "63",
+      "line": "73",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "buttons_values",
@@ -92265,13 +92293,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1925@F@parse_section_pwm_and_channel_from_message@potenciometers_values",
+    "ID": "c:logic.c@2131@F@parse_section_pwm_and_channel_from_message@potenciometers_values",
     "What": "Variable",
     "defdec": "Def",
     "display": "potenciometers_values",
     "location": {
       "column": "9",
-      "line": "64",
+      "line": "74",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "potenciometers_values",
@@ -92279,13 +92307,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@1960@F@parse_section_pwm_and_channel_from_message@zero_potenciometers_values",
+    "ID": "c:logic.c@2166@F@parse_section_pwm_and_channel_from_message@zero_potenciometers_values",
     "What": "Variable",
     "defdec": "Def",
     "display": "zero_potenciometers_values",
     "location": {
       "column": "9",
-      "line": "65",
+      "line": "75",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "zero_potenciometers_values",
@@ -92293,13 +92321,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@2005@F@parse_section_pwm_and_channel_from_message@i",
+    "ID": "c:logic.c@2211@F@parse_section_pwm_and_channel_from_message@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "14",
-      "line": "66",
+      "line": "76",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "i",
@@ -92307,13 +92335,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@2228@F@parse_section_pwm_and_channel_from_message@mode1",
+    "ID": "c:logic.c@2430@F@parse_section_pwm_and_channel_from_message@mode1",
     "What": "Variable",
     "defdec": "Def",
     "display": "mode1",
     "location": {
       "column": "9",
-      "line": "73",
+      "line": "83",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "mode1",
@@ -92321,13 +92349,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@2261@F@parse_section_pwm_and_channel_from_message@mode2",
+    "ID": "c:logic.c@2463@F@parse_section_pwm_and_channel_from_message@mode2",
     "What": "Variable",
     "defdec": "Def",
     "display": "mode2",
     "location": {
       "column": "9",
-      "line": "74",
+      "line": "84",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "mode2",
@@ -92335,13 +92363,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@2341@F@parse_section_pwm_and_channel_from_message@mode1_size",
+    "ID": "c:logic.c@2543@F@parse_section_pwm_and_channel_from_message@mode1_size",
     "What": "Variable",
     "defdec": "Def",
     "display": "mode1_size",
     "location": {
       "column": "13",
-      "line": "78",
+      "line": "88",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "mode1_size",
@@ -92349,13 +92377,13 @@
     "scope": null
   },
   {
-    "ID": "c:logic.c@2612@F@parse_section_pwm_and_channel_from_message@mode2_size",
+    "ID": "c:logic.c@2814@F@parse_section_pwm_and_channel_from_message@mode2_size",
     "What": "Variable",
     "defdec": "Def",
     "display": "mode2_size",
     "location": {
       "column": "13",
-      "line": "87",
+      "line": "97",
       "path": "C:\\Users\\anato\\Desktop\\stm32\\first_project\\logic.c"
     },
     "name": "mode2_size",

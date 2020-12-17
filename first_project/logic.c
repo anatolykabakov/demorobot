@@ -31,6 +31,14 @@ void set_and_reset_channel(uint16_t *section_channel, int channel_counter, int c
     }
 }
 
+int threshold_pwm(int pwm, int threshold) {
+  if (pwm > threshold) {
+    return pwm;
+  } else {
+    return 0;
+  }
+}
+
 void foo(int *worked_sections,
          int worked_sections_size,
          int potenciometers_values[],
@@ -44,8 +52,10 @@ void foo(int *worked_sections,
 
         channel_counter = (section_index * 2);
 
-        sections_pwm[i] = get_pwm_from_input_data(potenciometers_values[i],
+        int section_pwm = get_pwm_from_input_data(potenciometers_values[i],
                                                   zero_potenciometers_values[i]);
+        
+        sections_pwm[section_index] = threshold_pwm(section_pwm, 30);
 
         int channel = get_channel_from_input_data(potenciometers_values[i],
                                                   zero_potenciometers_values[i]);
@@ -67,7 +77,7 @@ void parse_section_pwm_and_channel_from_message(
         potenciometers_values[i] = message[i];
         zero_potenciometers_values[i] = zero_message[i];
     }
-    buttons_values[0] = 1;//message[4];
+    buttons_values[0] = message[4];
     buttons_values[1] = message[5];
 
     int mode1[] = {0, 1, 2, 3};

@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.50.6.265/W32 for ARM                  17/Dec/2020  17:00:45
+# IAR ELF Linker V8.50.6.265/W32 for ARM                  17/Dec/2020  20:00:39
 # Copyright 2007-2020 IAR Systems AB.
 #
 #    Output file  =
@@ -8,7 +8,7 @@
 #    Map file     =
 #        C:\Users\anato\Desktop\stm32\first_project\Debug\List\first_project.map
 #    Command line =
-#        -f C:\Users\anato\AppData\Local\Temp\EW36CC.tmp
+#        -f C:\Users\anato\AppData\Local\Temp\EW4646.tmp
 #        (C:\Users\anato\Desktop\stm32\first_project\Debug\Obj\delay.o
 #        C:\Users\anato\Desktop\stm32\first_project\Debug\Obj\logic.o
 #        C:\Users\anato\Desktop\stm32\first_project\Debug\Obj\main.o
@@ -69,7 +69,7 @@ initialize by copy { rw };
   .intvec            ro code   0x800'0000    0xec  startup_stm32f10x_md.o [1]
                              - 0x800'00ec    0xec
 
-"P1":                                      0x1470
+"P1":                                      0x147c
   .text              ro code   0x800'00ec   0x510  main.o [1]
   .text              ro code   0x800'05fc   0x270  stm32f10x_rcc.o [1]
   .text              ro code   0x800'086c    0xdc  stm32f10x_gpio.o [1]
@@ -81,24 +81,21 @@ initialize by copy { rw };
   .text              ro code   0x800'0ee8    0xbc  delay.o [1]
   .text              ro code   0x800'0fa4    0x66  ABImemset.o [3]
   .text              ro code   0x800'100a    0x2e  copy_init3.o [3]
-  .text              ro code   0x800'1038   0x134  logic.o [1]
-  .text              ro code   0x800'116c   0x1a4  system_stm32f10x.o [1]
-  .text              ro code   0x800'1310    0x86  ABImemcpy.o [3]
-  Initializer bytes  const     0x800'1398    0x2c  <for P2-1>
-  .text              ro code   0x800'13c4    0x28  data_init.o [3]
-  .iar.init_table    const     0x800'13ec    0x24  - Linker created -
-  .text              ro code   0x800'1410    0x1e  cmain.o [3]
-  .text              ro code   0x800'142e     0x4  low_level_init.o [2]
-  .text              ro code   0x800'1432     0x4  exit.o [2]
-  .text              ro code   0x800'1438     0xa  cexit.o [3]
-  .text              ro code   0x800'1444    0x14  exit.o [4]
-  .rodata            const     0x800'1458    0x10  logic.o [1]
-  .text              ro code   0x800'1468    0x10  startup_stm32f10x_md.o [1]
-  .text              ro code   0x800'1478     0xc  cstartup_M.o [3]
-  .rodata            const     0x800'1484     0x8  logic.o [1]
-  .text              ro code   0x800'148c     0x4  startup_stm32f10x_md.o [1]
-  .text              ro code   0x800'1490     0x4  startup_stm32f10x_md.o [1]
-  .text              ro code   0x800'1494     0x4  startup_stm32f10x_md.o [1]
+  .text              ro code   0x800'1038   0x140  logic.o [1]
+  .text              ro code   0x800'1178   0x1a4  system_stm32f10x.o [1]
+  .text              ro code   0x800'131c    0x86  ABImemcpy.o [3]
+  Initializer bytes  const     0x800'13a4    0x2c  <for P2-1>
+  .text              ro code   0x800'13d0    0x28  data_init.o [3]
+  .iar.init_table    const     0x800'13f8    0x24  - Linker created -
+  .text              ro code   0x800'141c    0x1e  cmain.o [3]
+  .text              ro code   0x800'143a     0x4  low_level_init.o [2]
+  .text              ro code   0x800'143e     0x4  exit.o [2]
+  .text              ro code   0x800'1444     0xa  cexit.o [3]
+  .text              ro code   0x800'1450    0x14  exit.o [4]
+  .rodata            const     0x800'1464    0x10  logic.o [1]
+  .text              ro code   0x800'1474    0x10  startup_stm32f10x_md.o [1]
+  .text              ro code   0x800'1484     0xc  cstartup_M.o [3]
+  .rodata            const     0x800'1490     0x8  logic.o [1]
   .text              ro code   0x800'1498     0x4  startup_stm32f10x_md.o [1]
   .text              ro code   0x800'149c     0x4  startup_stm32f10x_md.o [1]
   .text              ro code   0x800'14a0     0x4  startup_stm32f10x_md.o [1]
@@ -148,9 +145,12 @@ initialize by copy { rw };
   .text              ro code   0x800'1550     0x4  startup_stm32f10x_md.o [1]
   .text              ro code   0x800'1554     0x4  startup_stm32f10x_md.o [1]
   .text              ro code   0x800'1558     0x4  startup_stm32f10x_md.o [1]
-  .rodata            const     0x800'155c     0x0  zero_init3.o [3]
-  .rodata            const     0x800'155c     0x0  copy_init3.o [3]
-                             - 0x800'155c  0x1470
+  .text              ro code   0x800'155c     0x4  startup_stm32f10x_md.o [1]
+  .text              ro code   0x800'1560     0x4  startup_stm32f10x_md.o [1]
+  .text              ro code   0x800'1564     0x4  startup_stm32f10x_md.o [1]
+  .rodata            const     0x800'1568     0x0  zero_init3.o [3]
+  .rodata            const     0x800'1568     0x0  copy_init3.o [3]
+                             - 0x800'1568  0x147c
 
 "P2", part 1 of 3:                           0x2c
   P2-1                        0x2000'0000    0x2c  <Init block>
@@ -180,7 +180,7 @@ Unused ranges:
 
          From           To    Size
          ----           --    ----
-   0x800'155c   0x800'ffff  0xeaa4
+   0x800'1568   0x800'ffff  0xea98
   0x2000'0898  0x2000'4fff  0x4768
 
 
@@ -196,7 +196,7 @@ Zero (__iar_zero_init3)
 
 Copy (__iar_copy_init3)
     1 source range, total size 0x2c:
-           0x800'1398  0x2c
+           0x800'13a4  0x2c
     1 destination range, total size 0x2c:
           0x2000'0000  0x2c
 
@@ -214,7 +214,7 @@ command line/config:
 
 C:\Users\anato\Desktop\stm32\first_project\Debug\Obj: [1]
     delay.o                     188                 4
-    logic.o                     308       24
+    logic.o                     320       24
     main.o                    1'296        4      106
     misc.o                      112
     startup_stm32f10x_md.o      460
@@ -225,7 +225,7 @@ C:\Users\anato\Desktop\stm32\first_project\Debug\Obj: [1]
     stm32f10x_usart.o           316
     system_stm32f10x.o          420       20       20
     -------------------------------------------------
-    Total:                    4'898       68      150
+    Total:                    4'910       68      150
 
 dl7M_tln.a: [2]
     exit.o                        4
@@ -253,7 +253,7 @@ shb_l.a: [4]
     Gaps                          4
     Linker created                        38    2'048
 -----------------------------------------------------
-    Grand Total:              5'362      106    2'198
+    Grand Total:              5'374      106    2'198
 
 
 *******************************************************************************
@@ -262,9 +262,9 @@ shb_l.a: [4]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base    0x800'13ec          --   Gb  - Linker created -
-.iar.init_table$$Limit   0x800'1410          --   Gb  - Linker created -
-?main                    0x800'1411         Code  Gb  cmain.o [3]
+.iar.init_table$$Base    0x800'13f8          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'141c          --   Gb  - Linker created -
+?main                    0x800'141d         Code  Gb  cmain.o [3]
 ADCPrescTable           0x2000'0014    0x4  Data  Lc  stm32f10x_rcc.o [1]
 AHBPrescTable           0x2000'001c   0x10  Data  Gb  system_stm32f10x.o [1]
 APBAHBPrescTable        0x2000'0004   0x10  Data  Lc  stm32f10x_rcc.o [1]
@@ -295,21 +295,21 @@ RCC_WaitForHSEStartUp    0x800'0675   0x38  Code  Gb  stm32f10x_rcc.o [1]
 RX_BUF                  0x2000'002c   0x48  Data  Gb  main.o [1]
 RXc                     0x2000'0095    0x1  Data  Gb  main.o [1]
 RXi                     0x2000'0094    0x1  Data  Gb  main.o [1]
-Region$$Table$$Base      0x800'13ec          --   Gb  - Linker created -
-Region$$Table$$Limit     0x800'1410          --   Gb  - Linker created -
+Region$$Table$$Base      0x800'13f8          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'141c          --   Gb  - Linker created -
 SPI_Cmd                  0x800'0e7d   0x1c  Code  Gb  stm32f10x_spi.o [1]
 SPI_I2S_GetFlagStatus    0x800'0e9d   0x12  Code  Gb  stm32f10x_spi.o [1]
 SPI_I2S_SendData         0x800'0e99    0x4  Code  Gb  stm32f10x_spi.o [1]
 SPI_Init                 0x800'0e19   0x3e  Code  Gb  stm32f10x_spi.o [1]
 SPI_StructInit           0x800'0e57   0x26  Code  Gb  stm32f10x_spi.o [1]
-SetSysClock              0x800'122f    0x8  Code  Lc  system_stm32f10x.o [1]
+SetSysClock              0x800'123b    0x8  Code  Lc  system_stm32f10x.o [1]
 SetSysClockTo72          0x800'0353   0x5a  Code  Gb  main.o [1]
-SetSysClockTo72          0x800'1237   0xae  Code  Lc  system_stm32f10x.o [1]
+SetSysClockTo72          0x800'1243   0xae  Code  Lc  system_stm32f10x.o [1]
 SysTick_Config           0x800'0f0d   0x2e  Code  Lc  delay.o [1]
 SysTick_Handler          0x800'0f3b   0x10  Code  Gb  delay.o [1]
 SystemCoreClock         0x2000'0018    0x4  Data  Gb  system_stm32f10x.o [1]
-SystemCoreClockUpdate    0x800'11b1   0x7e  Code  Gb  system_stm32f10x.o [1]
-SystemInit               0x800'116d   0x44  Code  Gb  system_stm32f10x.o [1]
+SystemCoreClockUpdate    0x800'11bd   0x7e  Code  Gb  system_stm32f10x.o [1]
+SystemInit               0x800'1179   0x44  Code  Gb  system_stm32f10x.o [1]
 TIM_Cmd                  0x800'0c23   0x1c  Code  Gb  stm32f10x_tim.o [1]
 TIM_OC1Init              0x800'09db   0x94  Code  Gb  stm32f10x_tim.o [1]
 TIM_OC2Init              0x800'0a6f   0x8a  Code  Gb  stm32f10x_tim.o [1]
@@ -324,26 +324,26 @@ USART_ITConfig           0x800'0dbd   0x54  Code  Gb  stm32f10x_usart.o [1]
 USART_Init               0x800'0cdd   0xbc  Code  Gb  stm32f10x_usart.o [1]
 USART_ReceiveData        0x800'0e11    0x8  Code  Gb  stm32f10x_usart.o [1]
 __NVIC_SetPriority       0x800'0ee9   0x24  Code  Lc  delay.o [1]
-__aeabi_memcpy4          0x800'1311         Code  Gb  ABImemcpy.o [3]
-__aeabi_memcpy8          0x800'1311         Code  Gb  ABImemcpy.o [3]
+__aeabi_memcpy4          0x800'131d         Code  Gb  ABImemcpy.o [3]
+__aeabi_memcpy8          0x800'131d         Code  Gb  ABImemcpy.o [3]
 __aeabi_memset           0x800'0fa5         Code  Gb  ABImemset.o [3]
-__cmain                  0x800'1411         Code  Gb  cmain.o [3]
-__exit                   0x800'1445   0x14  Code  Gb  exit.o [4]
+__cmain                  0x800'141d         Code  Gb  cmain.o [3]
+__exit                   0x800'1451   0x14  Code  Gb  exit.o [4]
 __iar_Memset             0x800'0fa5         Code  Gb  ABImemset.o [3]
 __iar_Memset_word        0x800'0fad         Code  Gb  ABImemset.o [3]
 __iar_copy_init3         0x800'100b   0x2e  Code  Gb  copy_init3.o [3]
-__iar_data_init3         0x800'13c5   0x28  Code  Gb  data_init.o [3]
-__iar_program_start      0x800'1479         Code  Gb  cstartup_M.o [3]
+__iar_data_init3         0x800'13d1   0x28  Code  Gb  data_init.o [3]
+__iar_program_start      0x800'1485         Code  Gb  cstartup_M.o [3]
 __iar_zero_init3         0x800'0eaf   0x3a  Code  Gb  zero_init3.o [3]
-__low_level_init         0x800'142f    0x4  Code  Gb  low_level_init.o [2]
+__low_level_init         0x800'143b    0x4  Code  Gb  low_level_init.o [2]
 __vector_table           0x800'0000         Data  Gb  startup_stm32f10x_md.o [1]
-_call_main               0x800'141d         Code  Gb  cmain.o [3]
-_exit                    0x800'1439         Code  Gb  cexit.o [3]
-_main                    0x800'142b         Code  Gb  cmain.o [3]
+_call_main               0x800'1429         Code  Gb  cmain.o [3]
+_exit                    0x800'1445         Code  Gb  cexit.o [3]
+_main                    0x800'1437         Code  Gb  cmain.o [3]
 clear_RXBuffer           0x800'00ed   0x26  Code  Gb  main.o [1]
-exit                     0x800'1433    0x4  Code  Gb  exit.o [2]
+exit                     0x800'143f    0x4  Code  Gb  exit.o [2]
 first_msg               0x2000'0000    0x4  Data  Gb  main.o [1]
-foo                      0x800'1099   0x5a  Code  Gb  logic.o [1]
+foo                      0x800'10a1   0x5e  Code  Gb  logic.o [1]
 get_channel_from_input_data
                          0x800'104d    0xe  Code  Gb  logic.o [1]
 get_pwm_from_input_data
@@ -353,10 +353,11 @@ isControlMessageReceived
 main                     0x800'051d   0x96  Code  Gb  main.o [1]
 message                 0x2000'0080    0xc  Data  Gb  main.o [1]
 parse_section_pwm_and_channel_from_message
-                         0x800'10f3   0x70  Code  Gb  logic.o [1]
+                         0x800'10ff   0x70  Code  Gb  logic.o [1]
 pwm_init                 0x800'0113  0x106  Code  Gb  main.o [1]
 set_and_reset_channel    0x800'105b   0x3e  Code  Gb  logic.o [1]
 spi_init                 0x800'03ad  0x108  Code  Gb  main.o [1]
+threshold_pwm            0x800'1099    0x8  Code  Gb  logic.o [1]
 transfer_16b_SPI2_Master
                          0x800'04b5   0x68  Code  Gb  main.o [1]
 usTicks                 0x2000'008c    0x4  Data  Lc  delay.o [1]
@@ -369,7 +370,7 @@ zero_message            0x2000'0074    0xc  Data  Gb  main.o [1]
 [3] = rt7M_tl.a
 [4] = shb_l.a
 
-  5'362 bytes of readonly  code memory
+  5'374 bytes of readonly  code memory
     106 bytes of readonly  data memory
   2'198 bytes of readwrite data memory
 
