@@ -31,6 +31,14 @@ void set_and_reset_channel(uint16_t *section_channel, int channel_counter, int c
     }
 }
 
+void reset_channel(uint16_t *section_channel, int channel_counter) {
+    // reset 0 channel
+    *section_channel &= ~((1 << channel_counter) << 0);
+    // reset 1 channel
+    *section_channel &= ~((1 << channel_counter) << 1);
+}
+
+
 int threshold_pwm(int pwm, int threshold) {
   if (pwm > threshold) {
     return pwm;
@@ -46,7 +54,7 @@ void foo(int *worked_sections,
          uint16_t sections_pwm[],
          uint16_t* section_channel) {
     int channel_counter = 0;
-
+    int THRESHOLD = 30;
     for (int i=0; i < worked_sections_size; i++) {
         int section_index = worked_sections[i];
 
@@ -54,13 +62,18 @@ void foo(int *worked_sections,
 
         int section_pwm = get_pwm_from_input_data(potenciometers_values[i],
                                                   zero_potenciometers_values[i]);
-        
-        sections_pwm[section_index] = threshold_pwm(section_pwm, 30);
+        if (section_pwm >= THRESHOLD) {
+            sections_pwm[section_index] = section_pwm;
 
-        int channel = get_channel_from_input_data(potenciometers_values[i],
-                                                  zero_potenciometers_values[i]);
+            int channel = get_channel_from_input_data(potenciometers_values[i],
+                                                      zero_potenciometers_values[i]);
 
-        set_and_reset_channel(section_channel, channel_counter, channel);
+            set_and_reset_channel(section_channel, channel_counter, channel);
+        } else {
+            sections_pwm[section_index] = 0;
+
+            reset_channel(section_channel, channel_counter);
+        }
     }
 }
 
