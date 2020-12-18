@@ -365,8 +365,8 @@ int main(void)
       
       TIM2->CCR3 = sections_pwm[0] * 155;
       TIM2->CCR4 = sections_pwm[1] * 155;
-      TIM3->CCR1 = sections_pwm[2] * 155;
-      TIM3->CCR2 = sections_pwm[3] * 155;
+      TIM3->CCR1 = sections_pwm[3] * 155;
+      TIM3->CCR2 = sections_pwm[2] * 155;
       TIM3->CCR3 = sections_pwm[4] * 155;
       TIM3->CCR4 = sections_pwm[5] * 155;
       transfer_16b_SPI2_Master(section_channel);
