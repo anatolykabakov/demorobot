@@ -6,7 +6,7 @@
 #include "stm32f10x_spi.h"
 #include "misc.h"
 #include <string.h>
-#include "logic.h"
+#include "core.h"
 
 #define SYSCLK 72000000
 #define PRESCALER 72
@@ -361,7 +361,7 @@ int main(void)
       
       uint16_t sections_pwm[6] = {0,0,0,0,0,0};
       uint16_t section_channel = 0;
-      parse_section_pwm_and_channel_from_message(zero_message, message, sections_pwm, &section_channel); 
+      handle(zero_message, message, sections_pwm, &section_channel); 
       
       TIM2->CCR3 = sections_pwm[0] * 155;
       TIM2->CCR4 = sections_pwm[1] * 155;

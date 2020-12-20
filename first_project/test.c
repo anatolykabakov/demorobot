@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "logic.h"
+#include "core.h"
 
 void DecToBin( int n ) {
     if ( n >= 2 ) {
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
         section_pwm[i] = 0;
     }
     unsigned short section_channel = 0;
-    parse_section_pwm_and_channel_from_message(zero_message, message, section_pwm, &section_channel);
+    handle(zero_message, message, section_pwm, &section_channel);
     for (int i=0; i < array_size; i++) {
         printf("%i ", section_pwm[i]);
     }
