@@ -5,6 +5,9 @@ uint16_t mode1[] = {0, 1, 2, 3}; // режимы задают какие сек�
 uint16_t mode2[] = {4, 5, 65535, 65535}; // 65535 -- заглушка, недопустимое значение номера секции, есть проверка
 uint16_t PWM_THRESHOLD = 30; // значение порога шим, ниже которого 0
 
+uint16_t HYDRO_DOWN = 0; // TRUE / FALSE if using this board
+uint16_t HYDRO_UP = 1; // TRUE / FALSE if using this board
+
 void get_potenciometer_values_from_message(uint16_t message[],
                                            uint16_t potenciometers_values[4]) {
     for (int i = 0; i < 4; i++) {
@@ -13,9 +16,10 @@ void get_potenciometer_values_from_message(uint16_t message[],
 }
 
 void get_button_values_from_message(uint16_t message[],
-                                    uint16_t buttons_values[4]) {
+                                    uint16_t buttons_values[3]) {
     buttons_values[0] = message[4];
     buttons_values[1] = message[5];
+    buttons_values[2] = message[6];
 }
 
 void potentiometer_to_pwm(uint16_t potenciometers_values[4],
@@ -44,16 +48,16 @@ void potentiometer_to_channels(uint16_t potenciometers_values[4],
     }
 }
 
-void get_mode_by_button_value(uint16_t buttons_values[2],
-                              uint16_t mode[]) {
+void get_sections_by_button_value(uint16_t buttons_values[3],
+                                  uint16_t sections[]) {
     if (buttons_values[0] == 0) {
         for (int i=0; i<4; i++) {
-            mode[i] = mode1[i];
+            sections[i] = mode1[i];
         }
         
     } else {
         for (int i=0; i<4; i++) {
-            mode[i] = mode2[i];
+            sections[i] = mode2[i];
         }
     }
 }
@@ -66,27 +70,40 @@ int check_section_exist(int section_index) {
     }
 }
 
+int check_target_device_by_button(uint16_t buttons_values[3]) {
+    if ((buttons_values[1] == 1) && (buttons_values[2] == 0)) {
+        return HYDRO_UP;
+    }
+
+    if ((buttons_values[1] == 0) && (buttons_values[2] == 1)) {
+        return HYDRO_DOWN;
+    } 
+}
+
 void handle(
     uint16_t zero_message[],
     uint16_t message[],
     uint16_t sections_pwm[],
     uint16_t* section_channel
 ) {
+    uint16_t buttons_values[3];
+    get_button_values_from_message(message, buttons_values);
+    if (!check_target_device_by_button(buttons_values)) {
+        return;
+    }
     uint16_t potenciometers_values[4];
     get_potenciometer_values_from_message(message, potenciometers_values);
     uint16_t zero_potenciometers_values[4];
     get_potenciometer_values_from_message(zero_message, zero_potenciometers_values);
-    uint16_t buttons_values[2];
-    get_button_values_from_message(message, buttons_values);
     uint16_t pwm_values[4];
     potentiometer_to_pwm(potenciometers_values, zero_potenciometers_values, pwm_values);
     uint16_t sections_channels[4];
     potentiometer_to_channels(potenciometers_values, zero_potenciometers_values, sections_channels);
-    uint16_t mode[4];
-    get_mode_by_button_value(buttons_values, mode);
+    uint16_t sections[4];
+    get_sections_by_button_value(buttons_values, sections);
 
     for (int i=0; i < 4; i++) {
-        int section_index = mode[i];
+        int section_index = sections[i];
 
         if (!check_section_exist(section_index)) {
             continue;
