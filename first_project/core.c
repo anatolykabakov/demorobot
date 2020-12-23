@@ -5,8 +5,8 @@ uint16_t mode1[] = {0, 1, 2, 3}; // режимы задают какие сек�
 uint16_t mode2[] = {4, 5, 65535, 65535}; // 65535 -- заглушка, недопустимое значение номера секции, есть проверка
 uint16_t PWM_THRESHOLD = 30; // значение порога шим, ниже которого 0
 
-uint16_t HYDRO_DOWN = 0; // TRUE / FALSE if using this board
-uint16_t HYDRO_UP = 1; // TRUE / FALSE if using this board
+uint16_t HYDRO_DOWN = 1; // TRUE / FALSE if using this board
+uint16_t HYDRO_UP = 0; // TRUE / FALSE if using this board
 
 void get_potenciometer_values_from_message(uint16_t message[],
                                            uint16_t potenciometers_values[4]) {
@@ -50,7 +50,7 @@ void potentiometer_to_channels(uint16_t potenciometers_values[4],
 
 void get_sections_by_button_value(uint16_t buttons_values[3],
                                   uint16_t sections[]) {
-    if (buttons_values[0] == 0) {
+    if (buttons_values[2] == 0) {
         for (int i=0; i<4; i++) {
             sections[i] = mode1[i];
         }
@@ -70,14 +70,23 @@ int check_section_exist(int section_index) {
     }
 }
 
-int check_target_device_by_button(uint16_t buttons_values[3]) {
-    if ((buttons_values[1] == 1) && (buttons_values[2] == 0)) {
+int check_target_device(uint16_t buttons_values[3]) {
+    if (buttons_values[1] == 0) {
+        return HYDRO_DOWN;
+    } else {
         return HYDRO_UP;
     }
+}
 
-    if ((buttons_values[1] == 0) && (buttons_values[2] == 1)) {
-        return HYDRO_DOWN;
-    } 
+int check_power(uint16_t buttons_values[3]) {
+  int POWER = 0;
+  if (buttons_values[0]) {
+    POWER = 1;
+    return POWER;
+  } else {
+    return POWER;
+  }
+  
 }
 
 void handle(
@@ -88,7 +97,8 @@ void handle(
 ) {
     uint16_t buttons_values[3];
     get_button_values_from_message(message, buttons_values);
-    if (!check_target_device_by_button(buttons_values)) {
+    if ((!check_target_device(buttons_values)) ||
+        (!check_power(buttons_values))) {
         return;
     }
     uint16_t potenciometers_values[4];

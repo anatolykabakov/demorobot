@@ -44,10 +44,10 @@ volatile int isControlMessageReceived = 0;
 volatile char RXi;
 volatile char RXc;
 unsigned char RX_BUF[RX_BUF_SIZE] = {'\0'};
-unsigned char control_message[6] = {'\0'};
+unsigned char control_message[7] = {'\0'};
 int JoysticLeftYAxis;
-uint16_t zero_message[6];
-uint16_t message[6];
+uint16_t zero_message[7];
+uint16_t message[7];
 int first_msg = 1;
 
 
@@ -179,17 +179,17 @@ void USART3_IRQHandler(void) {
         clear_RXBuffer();
       }
 
-      int window_size = 7;
+      int window_size = 8;
       for (int i=0;i<RX_BUF_SIZE-window_size;i++) {
         
         if ((RX_BUF[i] == 13) && (RX_BUF[i+window_size] == 13)) {
           if (first_msg) {
             first_msg = 0;
-            for (int j=0; j<6;++j){
+            for (int j=0; j<7;++j){
               zero_message[j] = RX_BUF[j + i + 1];
             } 
           } else {
-            for (int j=0; j<6;++j){
+            for (int j=0; j<7;++j){
               message[j] = RX_BUF[j + i + 1];
             }
             isControlMessageReceived = 1;
