@@ -22,21 +22,25 @@ void get_button_values_from_message(uint16_t message[],
     buttons_values[2] = message[6];
 }
 
-void potentiometer_to_pwm(uint16_t potenciometers_values[4],
+uint16_t filter_pwm_by_threshold(uint16_t pwm_value, uint16_t PWM_THRESHOLD) {
+    if (pwm_value >= PWM_THRESHOLD) {
+        return pwm_value;
+    } else {
+        return 0;
+    }
+}
+
+void get_pwm_from_potenciometer(uint16_t potenciometers_values[4],
                           uint16_t zero_potenciometers_values[4],
                           uint16_t pwm_values[4]) {
     for (int i=0; i < 4; i++) {
         int absolute_value = abs(potenciometers_values[i] - zero_potenciometers_values[i]);
-
-        if (absolute_value >= PWM_THRESHOLD) {
-            pwm_values[i] = absolute_value;
-        } else {
-            pwm_values[i] = 0;
-        }
+        
+        pwm_values[i] = filter_pwm_by_threshold(absolute_value, PWM_THRESHOLD);
     }
 }
 
-void potentiometer_to_channels(uint16_t potenciometers_values[4],
+void get_section_channel_from_potenciometer(uint16_t potenciometers_values[4],
                                uint16_t zero_potenciometers_values[4],
                                uint16_t sections_channels[4]) {
     for (int i=0; i < 4; i++) {
@@ -48,7 +52,7 @@ void potentiometer_to_channels(uint16_t potenciometers_values[4],
     }
 }
 
-void get_sections_by_button_value(uint16_t buttons_values[3],
+void get_working_sections_by_button_value(uint16_t buttons_values[3],
                                   uint16_t sections[]) {
     if (buttons_values[2] == 0) {
         for (int i=0; i<4; i++) {
@@ -86,10 +90,54 @@ int check_power(uint16_t buttons_values[3]) {
   } else {
     return POWER;
   }
-  
 }
 
-void handle(
+void set_pwm_to_sections(uint16_t sections_pwm[],
+                         uint16_t pwm_values[4],
+                         uint16_t working_sections[4]) {
+    for (int i=0; i < 4; i++) {
+        int section_index = working_sections[i];
+
+        if (!check_section_exist(section_index)) {
+            continue;
+        }
+
+        int channel_counter = (section_index * 2);
+
+        if (pwm_values[i] > 0) {
+            sections_pwm[section_index] = pwm_values[i];
+        }
+    }
+}
+
+void set_channels_to_sections(
+    uint16_t* section_channel,
+    uint16_t sections_channels[4],
+    uint16_t pwm_values[4],
+    uint16_t working_sections[4]) {
+    for (int i=0; i < 4; i++) {
+        int section_index = working_sections[i];
+
+        if (!check_section_exist(section_index)) {
+            continue;
+        }
+
+        int channel_counter = (section_index * 2);
+
+        if (pwm_values[i] > 0) {
+            // set channel
+            *section_channel |= ((1 << channel_counter) << sections_channels[i]);
+        } else {
+            // reset channel
+            *section_channel &= ~((1 << channel_counter) << sections_channels[i]);
+        }
+        // reset neighboring channel
+        *section_channel &= ~((1 << channel_counter) << (1 - sections_channels[i]));
+    }
+
+}
+
+void handle_message(
     uint16_t zero_message[],
     uint16_t message[],
     uint16_t sections_pwm[],
@@ -106,30 +154,13 @@ void handle(
     uint16_t zero_potenciometers_values[4];
     get_potenciometer_values_from_message(zero_message, zero_potenciometers_values);
     uint16_t pwm_values[4];
-    potentiometer_to_pwm(potenciometers_values, zero_potenciometers_values, pwm_values);
+    get_pwm_from_potenciometer(potenciometers_values, zero_potenciometers_values, pwm_values);
     uint16_t sections_channels[4];
-    potentiometer_to_channels(potenciometers_values, zero_potenciometers_values, sections_channels);
-    uint16_t sections[4];
-    get_sections_by_button_value(buttons_values, sections);
+    get_section_channel_from_potenciometer(potenciometers_values, zero_potenciometers_values, sections_channels);
+    uint16_t working_sections[4];
+    get_working_sections_by_button_value(buttons_values, working_sections);
 
-    for (int i=0; i < 4; i++) {
-        int section_index = sections[i];
+    set_pwm_to_sections(sections_pwm, pwm_values, working_sections);
 
-        if (!check_section_exist(section_index)) {
-            continue;
-        }
-
-        int channel_counter = (section_index * 2);
-
-        if (pwm_values[i] > 0) {
-            sections_pwm[section_index] = pwm_values[i];
-            // set channel
-            *section_channel |= ((1 << channel_counter) << sections_channels[i]);
-        } else {
-            // reset channel
-            *section_channel &= ~((1 << channel_counter) << sections_channels[i]);
-        }
-        // reset neighboring channel
-        *section_channel &= ~((1 << channel_counter) << (1 - sections_channels[i]));
-    }
+    set_channels_to_sections(section_channel, sections_channels, pwm_values, working_sections);
 }

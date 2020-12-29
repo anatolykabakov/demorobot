@@ -2,7 +2,7 @@
 #pragma once
 typedef unsigned short uint16_t;
 
-void handle(
+void handle_message(
     uint16_t zero_message[],
     uint16_t message[],
     uint16_t sections_pwm[],

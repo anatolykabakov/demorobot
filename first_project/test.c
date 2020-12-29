@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
         section_pwm[i] = 0;
     }
     unsigned short section_channel = 0;
-    handle(zero_message, message, section_pwm, &section_channel);
+    handle_message(zero_message, message, section_pwm, &section_channel);
     for (int i=0; i < array_size; i++) {
         printf("%i ", section_pwm[i]);
     }
