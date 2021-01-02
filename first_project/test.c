@@ -9,7 +9,7 @@ void DecToBin( int n ) {
     printf("%d", n % 2);
 }
 int main(int argc, char* argv[]) {
-    int MESSAGE_SIZE = 7;
+    int MESSAGE_SIZE = 5;
     if ((argc - 1) != (MESSAGE_SIZE)) {
         fprintf(stderr, "Error!\n");
         return EXIT_FAILURE;
