@@ -40,5 +40,10 @@ int main(int argc, char* argv[]) {
     DecToBin(section_channel);
     // printf("%u\n", section_channel);
     printf("\n");
+    int array2_size = sizeof(non_hydraulic_actions) / sizeof(non_hydraulic_actions[0]);
+    for (int i=0; i < array2_size; i++) {
+        printf("%i ", non_hydraulic_actions[i]);
+    }
+    printf("\n");
     return EXIT_SUCCESS;
 }
