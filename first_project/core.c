@@ -2,18 +2,22 @@
 #include "core.h"
 
 // available modes
-uint16_t available_modes[2] = {1, 2};
-uint16_t PWM_THRESHOLD = 30; // значение порога шим, ниже которого 0
+uint16_t available_modes[2] = {0, 1};
+uint16_t PWM_THRESHOLD = 30; // PWM threshold value. If less threshold then zero 
 
-uint16_t working_sections_table[5][4] = { // i - mode, j - section index
-    65535, 65535, 65535, 65535,
+uint16_t working_sections_table[4][4] = { // i - mode, j - section index
     0, 1, 2, 3,
     0, 1, 4, 5,
     6, 7, 8, 9,
     6, 7, 10, 11
 };
 
-int is_mode_available(uint16_t val, uint16_t arr[], int number_of_elements){
+uint16_t working_modes_table[2][2] = { // i - button 1 value, j - button 2 value
+    0, 2,
+    1, 3
+};
+
+int check_mode_availability(uint16_t val, uint16_t arr[], int number_of_elements){
     for(int i = 0; i < number_of_elements; i++){
         if(arr[i] == val) {
             return 1;
@@ -29,8 +33,8 @@ void get_potenciometer_values_from_message(uint16_t message[],
     }
 }
 
-void get_mode_from_message(uint16_t message[], uint16_t *mode) {
-    *mode = message[4];
+void get_mode_from_button_values(uint16_t button_values[], uint16_t *mode) {
+    *mode = working_modes_table[button_values[1]][button_values[2]];
 }
 
 uint16_t filter_pwm_by_threshold(uint16_t pwm_value, uint16_t PWM_THRESHOLD) {
@@ -71,7 +75,7 @@ int check_section_exist(int section_index) {
     }
 }
 
-int check_power(uint16_t buttons_values[3]) {
+int check_action_permision(uint16_t buttons_values[3]) {
   int POWER = 0;
   if (buttons_values[0]) {
     POWER = 1;
@@ -127,15 +131,26 @@ void set_channels_to_sections(
 
 }
 
+void get_button_values_from_message(uint16_t message[],
+                                    uint16_t buttons_values[3]) {
+    buttons_values[0] = message[4];
+    buttons_values[1] = message[5];
+    buttons_values[2] = message[6];
+}
+
 void handle_message(
     uint16_t zero_message[],
     uint16_t message[],
     uint16_t sections_pwm[],
-    uint16_t* section_channel
+    uint16_t* section_channel,
+    uint16_t non_hydraulic_actions[]
 ) {
-    int mode = 0;
-    get_mode_from_message(message, &mode);
-    if (!is_mode_available(mode, available_modes, 2)) {
+    uint16_t buttons_values[3];
+    get_button_values_from_message(message, buttons_values);
+    int mode = 65535;
+    get_mode_from_button_values(buttons_values, &mode);
+    if (!check_action_permision(buttons_values) ||
+        !check_mode_availability(mode, available_modes, 2)) {
         return;
     }
     uint16_t potenciometers_values[4];

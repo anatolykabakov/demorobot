@@ -337,13 +337,15 @@ void transfer_16b_SPI2_Master(uint16_t outByte){
 }
 
 void send_control_signal(uint16_t sections_pwm[],
-                         uint16_t *section_channel) {
-  TIM2->CCR3 = sections_pwm[0] * 155;
-  TIM2->CCR4 = sections_pwm[1] * 155;
-  TIM3->CCR1 = sections_pwm[3] * 155;
-  TIM3->CCR2 = sections_pwm[2] * 155;
-  TIM3->CCR3 = sections_pwm[4] * 155;
-  TIM3->CCR4 = sections_pwm[5] * 155;
+                         uint16_t *section_channel,
+                         uint16_t non_hydraulic_actions[]) {
+  uint16_t PWM_SCALE = 155;
+  TIM2->CCR3 = sections_pwm[0] * PWM_SCALE;
+  TIM2->CCR4 = sections_pwm[1] * PWM_SCALE;
+  TIM3->CCR1 = sections_pwm[3] * PWM_SCALE;
+  TIM3->CCR2 = sections_pwm[2] * PWM_SCALE;
+  TIM3->CCR3 = sections_pwm[4] * PWM_SCALE;
+  TIM3->CCR4 = sections_pwm[5] * PWM_SCALE;
   transfer_16b_SPI2_Master(*section_channel);
 }
 
@@ -358,14 +360,23 @@ int main(void)
   while(1)
   {
     uint16_t sections_pwm[6] = {0,0,0,0,0,0};
+    uint16_t non_hydraulic_actions[] = {0,0,0,0,0,0};
     uint16_t sections_channel = 0;
     if (isControlMessageReceived) {
-      handle_message(zero_message, message, sections_pwm, &sections_channel);
+      handle_message(
+        zero_message, message,
+        sections_pwm, &sections_channel,
+        non_hydraulic_actions
+      );
 
       isControlMessageReceived = 0;
       clear_RXBuffer();
     }
-    send_control_signal(sections_pwm, &sections_channel);
+    send_control_signal(
+      sections_pwm,
+      &sections_channel,
+      non_hydraulic_actions
+    );
 
     DelayMs(10);
   }
