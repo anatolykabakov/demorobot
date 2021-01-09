@@ -9,7 +9,7 @@ void DecToBin( int n ) {
     printf("%d", n % 2);
 }
 int main(int argc, char* argv[]) {
-    int MESSAGE_SIZE = 5;
+    int MESSAGE_SIZE = 7;
     if ((argc - 1) != (MESSAGE_SIZE)) {
         fprintf(stderr, "Error!\n");
         return EXIT_FAILURE;
@@ -27,13 +27,23 @@ int main(int argc, char* argv[]) {
         section_pwm[i] = 0;
     }
     unsigned short section_channel = 0;
-    handle_message(zero_message, message, section_pwm, &section_channel);
+    uint16_t non_hydraulic_actions[] = {0,0,0,0,0,0};
+    handle_message(
+        zero_message, message,
+        section_pwm, &section_channel,
+        non_hydraulic_actions
+    );
     for (int i=0; i < array_size; i++) {
         printf("%i ", section_pwm[i]);
     }
     printf("\n");
     DecToBin(section_channel);
     // printf("%u\n", section_channel);
+    printf("\n");
+    int array2_size = sizeof(non_hydraulic_actions) / sizeof(non_hydraulic_actions[0]);
+    for (int i=0; i < array2_size; i++) {
+        printf("%i ", non_hydraulic_actions[i]);
+    }
     printf("\n");
     return EXIT_SUCCESS;
 }
