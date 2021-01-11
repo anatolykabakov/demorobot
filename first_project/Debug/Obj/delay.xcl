@@ -1,23 +1,23 @@
-"C:\Users\anato\Desktop\stm32\first_project\delay.c"
+"C:\Users\anato\Desktop\stm32\demorobot\first_project\delay.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-C:\Users\anato\Desktop\stm32\first_project\Debug\Obj\delay.pbi.dep
+C:\Users\anato\Desktop\stm32\demorobot\first_project\Debug\Obj\delay.pbi.dep
 -o
 delay.pbi
 -I
-C:\Users\anato\Desktop\stm32\first_project
+C:\Users\anato\Desktop\stm32\demorobot\first_project
 -I
-C:\Users\anato\Desktop\stm32\first_project\..\Libraries\
+C:\Users\anato\Desktop\stm32\demorobot\first_project\..\Libraries\
 -I
-C:\Users\anato\Desktop\stm32\first_project\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\iar\
+C:\Users\anato\Desktop\stm32\demorobot\first_project\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\iar\
 -I
-C:\Users\anato\Desktop\stm32\first_project\..\Libraries\STM32F10x_StdPeriph_Driver\inc\
+C:\Users\anato\Desktop\stm32\demorobot\first_project\..\Libraries\STM32F10x_StdPeriph_Driver\inc\
 -I
-C:\Users\anato\Desktop\stm32\first_project\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\
+C:\Users\anato\Desktop\stm32\demorobot\first_project\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\arm\CMSIS\Core\Include\
 -I
@@ -27,13 +27,13 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\arm\inc\c
 -I
-C:\Users\anato\Desktop\stm32\Libraries
+C:\Users\anato\Desktop\stm32\demorobot\Libraries
 -I
-C:\Users\anato\Desktop\stm32\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\iar
+C:\Users\anato\Desktop\stm32\demorobot\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\iar
 -I
-C:\Users\anato\Desktop\stm32\Libraries\STM32F10x_StdPeriph_Driver\inc
+C:\Users\anato\Desktop\stm32\demorobot\Libraries\STM32F10x_StdPeriph_Driver\inc
 -I
-C:\Users\anato\Desktop\stm32\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x
+C:\Users\anato\Desktop\stm32\demorobot\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\arm\CMSIS\Core\Include
 -I

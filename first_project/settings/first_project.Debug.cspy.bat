@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\anato\Desktop\stm32\first_project\settings\first_project.Debug.general.xcl" --backend -f "C:\Users\anato\Desktop\stm32\first_project\settings\first_project.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\anato\Desktop\stm32\demorobot\first_project\settings\first_project.Debug.general.xcl" --backend -f "C:\Users\anato\Desktop\stm32\demorobot\first_project\settings\first_project.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\anato\Desktop\stm32\first_project\settings\first_project.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\anato\Desktop\stm32\first_project\settings\first_project.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\anato\Desktop\stm32\demorobot\first_project\settings\first_project.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\anato\Desktop\stm32\demorobot\first_project\settings\first_project.Debug.driver.xcl" 
 
 @echo off 
 :end

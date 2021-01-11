@@ -2125,16 +2125,16 @@
         </file>
     </group>
     <file>
+        <name>$PROJ_DIR$\core.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\core.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\delay.c</name>
     </file>
     <file>
         <name>$PROJ_DIR$\delay.h</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\logic.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\logic.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\main.c</name>
