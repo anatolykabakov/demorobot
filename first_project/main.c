@@ -182,7 +182,7 @@ void USART3_IRQHandler(void) {
       int window_size = 8;
       for (int i=0;i<RX_BUF_SIZE-window_size;i++) {
         
-        if ((RX_BUF[i] == 13) && (RX_BUF[i+window_size] == 19)) {
+        if ((RX_BUF[i] == 255) && (RX_BUF[i+window_size] == 19)) {
           if (first_msg) {
             first_msg = 0;
             for (int j=0; j<7;++j){
