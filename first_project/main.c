@@ -182,7 +182,7 @@ void USART3_IRQHandler(void) {
       int window_size = 8;
       for (int i=0;i<RX_BUF_SIZE-window_size;i++) {
         
-        if ((RX_BUF[i] == 13) && (RX_BUF[i+window_size] == 13)) {
+        if ((RX_BUF[i] == 13) && (RX_BUF[i+window_size] == 19)) {
           if (first_msg) {
             first_msg = 0;
             for (int j=0; j<7;++j){
@@ -196,7 +196,6 @@ void USART3_IRQHandler(void) {
           }
           clear_RXBuffer();
         }
-       
       }
       
     }
@@ -359,10 +358,10 @@ int main(void)
 
   while(1)
   {
-    uint16_t sections_pwm[6] = {0,0,0,0,0,0};
-    uint16_t non_hydraulic_actions[] = {0,0,0,0,0,0};
-    uint16_t sections_channel = 0;
     if (isControlMessageReceived) {
+      uint16_t sections_pwm[6] = {0,0,0,0,0,0};
+      uint16_t non_hydraulic_actions[] = {0,0,0,0,0,0};
+      uint16_t sections_channel = 0;
       handle_message(
         zero_message, message,
         sections_pwm, &sections_channel,
@@ -371,12 +370,13 @@ int main(void)
 
       isControlMessageReceived = 0;
       clear_RXBuffer();
+      send_control_signal(
+        sections_pwm,
+        &sections_channel,
+        non_hydraulic_actions
+      );
     }
-    send_control_signal(
-      sections_pwm,
-      &sections_channel,
-      non_hydraulic_actions
-    );
+    
 
     DelayMs(10);
   }

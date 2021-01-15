@@ -2,14 +2,15 @@
 #include "core.h"
 
 // available modes
-uint16_t available_modes[2] = {0, 1};
+uint16_t available_modes[2] = {0, 1}; // for up board
+// uint16_t available_modes[2] = {2, 3}; // for down board
 uint16_t PWM_THRESHOLD = 30; // PWM threshold value. If less threshold then zero 
 
 uint16_t working_sections_table[4][4] = { // i - mode, j - section index
     0, 1, 2, 3,
     0, 1, 4, 5,
-    6, 7, 8, 9,
-    6, 7, 10, 11
+    0, 1, 2, 3,
+    0, 1, 4, 5,
 };
 
 uint16_t working_modes_table[2][2] = { // i - button 1 value, j - button 2 value
@@ -199,7 +200,7 @@ void handle_message(
     turn_off_light(buttons_values, non_hydraulic_actions);
 
     // handle hydralic functions
-    int mode = 65535;
+    uint16_t mode = 65535;
     get_mode_from_button_values(buttons_values, &mode);
     if (!check_mode_availability(mode, available_modes, 2)) {
         return;
